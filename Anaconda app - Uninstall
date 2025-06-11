@@ -1,0 +1,24 @@
+#!/bin/bash
+ 
+# Remove LaunchAgents (if installed)
+rm -rf ~/Library/LaunchAgents/com.anaconda*
+ 
+# Remove Anaconda-related files
+rm -rf ~/.conda ~/.anaconda ~/.jupyter
+rm -rf ~/.condarc ~/.conda ~/.continuum
+ 
+# The following are a few examples of how you might need to delete your anaconda3 folder
+rm -rf anaconda3
+rm -rf ~/anaconda3
+sudo rm -rf /opt/anaconda3
+sudo rm -rf /Applications/Anaconda-Navigator.app
+sudo rm -rf /opt/homebrew/anaconda3
+sudo rm -rf /Applications/anaconda3
+sudo rm -rf /opt/anaconda3_old_backup
+ 
+# Run recon & update delinea policies
+sudo jamf recon
+/usr/local/bin/pmagentctl updateclientitems
+ 
+echo "Anaconda has been removed successfully."
+exit 0
