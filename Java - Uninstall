@@ -1,0 +1,28 @@
+#!/bin/bash
+
+echo "Uninstalling Oracle Java..."
+
+# Remove the Java installation directory
+sudo rm -rf /Library/Java/JavaVirtualMachines/jdk*.jdk
+
+# Remove Java control panel preferences (if any)
+sudo rm -rf /Library/PreferencePanes/JavaControlPanel.prefPane
+sudo rm -rf ~/Library/Preferences/com.oracle.javadeployment.plist
+sudo rm -rf ~/Library/Application\ Support/Oracle/Java
+sudo rm -rf /Library/Application\ Support/Oracle/Java
+
+# Remove Java plug-in from browser
+sudo rm -rf /Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin
+sudo rm -rf /Library/PreferencePanes/JavaControlPanel.prefPane
+
+# Remove launch daemons if present
+sudo rm -f /Library/LaunchAgents/com.oracle.java.Java-Updater.plist
+sudo rm -f /Library/LaunchDaemons/com.oracle.java.Helper-Tool.plist
+
+# Remove JMC if present
+sudo rm -fr /Applications/JDK\ Mission\ Control.app
+
+echo "Oracle Java uninstallation complete."
+
+# Runing recon
+sudo jamf recon
